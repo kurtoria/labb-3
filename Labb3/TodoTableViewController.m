@@ -47,9 +47,9 @@
     //return 2;
     
     if (self.doneItems != nil) {
-        return 1;
+        return 2;
     } else {
-        return 0;
+        return 1;
     }
     
 }
