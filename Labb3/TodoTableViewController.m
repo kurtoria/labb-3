@@ -26,17 +26,10 @@
     [super viewDidLoad];
     self.model = [[ListModel alloc] init];
     
-    //self.model.todoItemDict = @{};
-    //self.model.doneItemDict = @{};
-    
     //ListModel array
     self.model.todoItems = @[@{@"todo": @"some things", @"category": @"work"},
                              @{@"todo": @"other things", @"category": @"home"}].mutableCopy;
     self.model.doneItems = @[@{@"todo": @"nothing", @"category": @"home"}].mutableCopy;
-    
-    //TableView array
-    //self.todoItems = @[@"first thing", @"second thing", @"third thing"].mutableCopy;
-    //self.doneItems = @[@"hej"].mutableCopy;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,10 +40,6 @@
 
 //Move between done and todo on selected row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    //NSString *cellText = cell.textLabel.text;
-    //[self.doneItems addObject:cellText];
-    //[self.doneItems addObject:cell];
     
     if (indexPath.section == 0) {
         NSMutableArray *item = [self.model.todoItems[indexPath.row] mutableCopy];
@@ -148,16 +137,15 @@
         
         // Delete the row from the data source
         //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self.model.todoItems removeObject:indexPath];
+        if (indexPath.section == 0) {
+            [self.model.todoItems removeObjectAtIndex:indexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [self refresh];
+        } else {
+            [self.model.doneItems removeObjectAtIndex:indexPath.row];
+            [self refresh];
+        }
         
-        /*
-        id object = [[[self.todoItems objectAtIndex:index] retain] autorelease];
-        [self.todoItems removeObject:indexPath.row];
-        [self.doneItems insertObject:object atIndex:0];
-        
-        [self.array removeObjectAtIndex:index];
-        [self.array insertObject:object atIndex:newIndex];
-         */
         
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

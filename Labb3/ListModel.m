@@ -11,14 +11,17 @@
 @implementation ListModel
 
 
-/*
--(void) addObjectToArray(NSMutableArray)array {
+
+-(NSMutableArray*) addObjectToArray:(NSMutableArray*)array {
     return array;
 }
 
--(void) deleteObjectFromArray(NSMutableArray)array {
+/*
+-(NSMutableArray*) deleteObjectFromArray:(NSMutableArray*)array and NSIndexPath(NSIndexPath*)index {
+    [self.array remove(index)]
     return array;
 }
  */
+ 
 
 @end
