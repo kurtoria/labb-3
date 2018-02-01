@@ -12,4 +12,7 @@
 @property (nonatomic) NSMutableArray *todoItems;
 @property (nonatomic) NSMutableArray *doneItems;
 
+@property (nonatomic) NSDictionary *todoItemDict;
+@property (nonatomic) NSDictionary *doneItemDict;
+
 @end

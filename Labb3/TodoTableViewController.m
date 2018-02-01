@@ -9,20 +9,35 @@
 #import "TodoTableViewController.h"
 #import "ListModel.h"
 #import "alterMutableArray.h"
+#import "ListModel.h"
 
 @interface TodoTableViewController ()
-@property (nonatomic) NSMutableArray *todoItems;
-@property (nonatomic) NSMutableArray *doneItems;
+//@property (nonatomic) NSMutableArray *todoItems;
+//@property (nonatomic) NSMutableArray *doneItems;
+
+@property (nonatomic) ListModel *model;
 
 @end
 
 @implementation TodoTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.model = [[ListModel alloc] init];
     
-    self.todoItems = @[@"first thing", @"second thing", @"third thing"].mutableCopy;
-    self.doneItems = @[].mutableCopy;
+    //self.model.todoItemDict = @{};
+    //self.model.doneItemDict = @{};
+    
+    //ListModel array
+    self.model.todoItems = @[@{@"todo": @"some things", @"category": @"work"},
+                             @{@"todo": @"other things", @"category": @"home"}].mutableCopy;
+    self.model.doneItems = @[@{@"todo": @"nothing", @"category": @"home"}].mutableCopy;
+    
+    //TableView array
+    //self.todoItems = @[@"first thing", @"second thing", @"third thing"].mutableCopy;
+    //self.doneItems = @[@"hej"].mutableCopy;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -30,9 +45,33 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-//Do something at selected row
+//Move between done and todo on selected row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //NSString *cellText = cell.textLabel.text;
+    //[self.doneItems addObject:cellText];
+    //[self.doneItems addObject:cell];
     
+    if (indexPath.section == 0) {
+        NSMutableArray *item = [self.model.todoItems[indexPath.row] mutableCopy];
+        //UITableViewCellAccessoryCheckmark;
+        [self.model.doneItems addObject:item];
+        [self.model.todoItems removeObject:item];
+    } else {
+        NSMutableArray *item = [self.model.doneItems[indexPath.row] mutableCopy];
+        //UITableViewCellAccessoryNone;
+        [self.model.todoItems addObject:item];
+        [self.model.doneItems removeObject:item];
+    }
+    
+    (NSLog(@"todoItems: %@", self.model.todoItems));
+    (NSLog(@"todoItems: %@", self.model.doneItems));
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self refresh];
+}
+
+-(void)refresh {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +85,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //return 2;
     
-    if (self.doneItems != nil) {
+    if (self.model.doneItems != nil) {
         return 2;
     } else {
         return 1;
@@ -68,9 +107,9 @@
     //return self.todoItems.count;
     
     if (section == 0) {
-        return self.todoItems.count;
+        return self.model.todoItems.count;
     } else
-        return self.doneItems.count;
+        return self.model.doneItems.count;
 }
 
 
@@ -79,9 +118,11 @@
     
     // Configure the cell...
     if (indexPath.section == 0) {
-        cell.textLabel.text = self.todoItems[indexPath.row];
+        cell.textLabel.text = self.model.todoItems[indexPath.row][@"todo"];
+        (NSLog(@"todoItems: %@", self.model.todoItems));
     } else if (indexPath.section == 1) {
-        cell.textLabel.text = self.doneItems[indexPath.row];
+        cell.textLabel.text = self.model.doneItems[indexPath.row][@"todo"];
+        (NSLog(@"todoItems: %@", self.model.doneItems));
     }
     
     return cell;
@@ -96,7 +137,7 @@
 }
 
 - (void)doneWithItem {
-    [self.todoItems moveFromArray:self.todoItems toArray:self.doneItems];
+    //[self.model.todoItems moveFromArray:self.todoItems toArray:self.doneItems];
 }
 
 
@@ -104,9 +145,10 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         // Delete the row from the data source
         //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self.todoItems removeObject:indexPath];
+        [self.model.todoItems removeObject:indexPath];
         
         /*
         id object = [[[self.todoItems objectAtIndex:index] retain] autorelease];
