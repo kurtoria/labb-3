@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TodoTableViewController : UITableViewController
+@interface TodoTableViewController : UITableViewController <UIGestureRecognizerDelegate>
 
 @end

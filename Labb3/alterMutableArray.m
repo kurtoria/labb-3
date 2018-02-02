@@ -23,24 +23,17 @@
 }
 
 /*
-- (void)moveObjectToAnotherMutableArray:(NSMutableArray*)from toMutableArray:(NSMutableArray*) to {
-    id path;
-    id object;
-    object = [from objectAtIndex:path];
-    [from removeObject:path];
-    [to addObject:object];
-}
- */
-
-- (BOOL)moveFromArray:(NSMutableArray *)fromArray toArray:(NSMutableArray *)toArray {
-    if ([fromArray containsObject:self]) {
-        [fromArray removeObject:self];
-        [toArray addObject:self];
-        
-        return YES;
+- (void)moveBetweenArray:(NSMutableArray *)todoArray toArray:(NSMutableArray *)doneArray withSection:(long)indexPath {
+    if (indexPath == 0) {
+        NSMutableArray *item = [todoArray[indexPath] mutableCopy];
+        [doneArray addObject:item];
+        [todoArray removeObject:item];
     } else {
-        return NO;
+        NSMutableArray *item = [doneArray[indexPath] mutableCopy];
+        [todoArray addObject:item];
+        [doneArray removeObject:item];
     }
 }
+ */
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSMutableArray (MoveArray)
-- (BOOL)moveFromArray:(NSMutableArray *)fromArray toArray:(NSMutableArray *)toArray;
+//- (BOOL)moveFromArray:(NSMutableArray *)fromArray toArray:(NSMutableArray *)toArray;
+- (void)moveBetweenArray:(NSMutableArray *)todoArray toArray:(NSMutableArray *)doneArray withSection:(long)indexPath;
 
 @end

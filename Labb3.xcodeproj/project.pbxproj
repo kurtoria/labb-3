@@ -16,6 +16,7 @@
 		65BFBE0B20230DDF00042C2E /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE0A20230DDF00042C2E /* ListModel.m */; };
 		65BFBE0E20230E0700042C2E /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE0D20230E0700042C2E /* TodoTableViewController.m */; };
 		65BFBE112023126600042C2E /* alterMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE102023126600042C2E /* alterMutableArray.m */; };
+		65BFBE142023419200042C2E /* SavingLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE132023419200042C2E /* SavingLists.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		65BFBE0D20230E0700042C2E /* TodoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewController.m; sourceTree = "<group>"; };
 		65BFBE0F2023126600042C2E /* alterMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alterMutableArray.h; sourceTree = "<group>"; };
 		65BFBE102023126600042C2E /* alterMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alterMutableArray.m; sourceTree = "<group>"; };
+		65BFBE122023419200042C2E /* SavingLists.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SavingLists.h; sourceTree = "<group>"; };
+		65BFBE132023419200042C2E /* SavingLists.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SavingLists.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				65BFBE0D20230E0700042C2E /* TodoTableViewController.m */,
 				65BFBE0F2023126600042C2E /* alterMutableArray.h */,
 				65BFBE102023126600042C2E /* alterMutableArray.m */,
+				65BFBE122023419200042C2E /* SavingLists.h */,
+				65BFBE132023419200042C2E /* SavingLists.m */,
 			);
 			path = Labb3;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 				65BFBDF820230DC300042C2E /* ViewController.m in Sources */,
 				65BFBE0320230DC300042C2E /* main.m in Sources */,
 				65BFBDF520230DC200042C2E /* AppDelegate.m in Sources */,
+				65BFBE142023419200042C2E /* SavingLists.m in Sources */,
 				65BFBE0E20230E0700042C2E /* TodoTableViewController.m in Sources */,
 				65BFBE0B20230DDF00042C2E /* ListModel.m in Sources */,
 				65BFBE112023126600042C2E /* alterMutableArray.m in Sources */,
@@ -297,6 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H4G78PE5AQ;
 				INFOPLIST_FILE = Labb3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VG.Labb3;
@@ -310,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H4G78PE5AQ;
 				INFOPLIST_FILE = Labb3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VG.Labb3;
