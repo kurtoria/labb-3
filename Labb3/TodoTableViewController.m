@@ -11,6 +11,7 @@
 #import "alterMutableArray.h"
 #import "ListModel.h"
 #import "SavingLists.h"
+#import "AddItemViewController.h"
 
 @interface TodoTableViewController ()
 //@property (nonatomic) NSMutableArray *todoItems;
@@ -19,16 +20,19 @@
 @property (nonatomic) ListModel *model;
 @property (nonatomic) SavingLists *saving;
 //@property (nonatomic) UIImageView *
+@property (nonatomic) BOOL isImportant;
 
 @end
 
 @implementation TodoTableViewController
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.model = [[ListModel alloc] init];
     self.saving = [[SavingLists alloc] init];
+    self.isImportant = YES;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,12 +43,19 @@
 
 -(void)initialize {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    //[self refresh];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)refresh {
     [self.tableView reloadData];
     //[self.model saveArrays];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //[self.tableView reloadData];
+    [self refresh];
+    
 }
 
 /*
@@ -55,6 +66,8 @@
 }
  */
 
+
+/*
 // UIAlertController, adding items to your to do-list.
 - (IBAction)addButton:(id)sender {
     
@@ -92,7 +105,11 @@
     [self presentViewController:alert animated:YES completion:nil];
     //[self refresh];
     (NSLog(@"todoItems: %@", self.model.todoItems));
+     
+ 
 }
+ */
+
 
 //Move between done and todo on selected row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,13 +139,17 @@
         UITableViewCell *cell = (UITableViewCell*) [gesture view];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         NSLog(@"Longpress works");
-        BOOL isImportant = NO;
         if (indexPath.section == 0) {
-            if (isImportant) {
-                
+            NSLog(@"isImportant: %i", self.isImportant);
+            if (self.isImportant == YES) {
+            cell.textLabel.textColor = [UIColor redColor];
+                self.isImportant = NO;
             } else {
-                isImportant = YES;
+                cell.textLabel.textColor = [UIColor blackColor];
+                self.isImportant = YES;
+                
             }
+            
         }
         
     }
@@ -230,14 +251,19 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"Add"]) {
+        AddItemViewController *add = [segue destinationViewController];
+        add.model = self.model;
+        
+    }
 }
-*/
+
 
 @end

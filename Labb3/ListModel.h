@@ -15,7 +15,7 @@
 //@property (nonatomic) NSDictionary *todoItemDict;
 //@property (nonatomic) NSDictionary *doneItemDict;
 
-- (void)moveBetweenArray:(NSMutableArray *)todoArray toArray:(NSMutableArray *)doneArray withSection:(long)indexPath;
+//- (void)moveBetweenArray:(NSMutableArray *)todoArray toArray:(NSMutableArray *)doneArray withSection:(long)indexPath;
 - (void) saveArrays;
 
 @end

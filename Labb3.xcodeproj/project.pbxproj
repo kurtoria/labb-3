@@ -17,6 +17,7 @@
 		65BFBE0E20230E0700042C2E /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE0D20230E0700042C2E /* TodoTableViewController.m */; };
 		65BFBE112023126600042C2E /* alterMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE102023126600042C2E /* alterMutableArray.m */; };
 		65BFBE142023419200042C2E /* SavingLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE132023419200042C2E /* SavingLists.m */; };
+		65BFBE172024A48400042C2E /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBE162024A48400042C2E /* AddItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		65BFBE102023126600042C2E /* alterMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alterMutableArray.m; sourceTree = "<group>"; };
 		65BFBE122023419200042C2E /* SavingLists.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SavingLists.h; sourceTree = "<group>"; };
 		65BFBE132023419200042C2E /* SavingLists.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SavingLists.m; sourceTree = "<group>"; };
+		65BFBE152024A48400042C2E /* AddItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		65BFBE162024A48400042C2E /* AddItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				65BFBE102023126600042C2E /* alterMutableArray.m */,
 				65BFBE122023419200042C2E /* SavingLists.h */,
 				65BFBE132023419200042C2E /* SavingLists.m */,
+				65BFBE152024A48400042C2E /* AddItemViewController.h */,
+				65BFBE162024A48400042C2E /* AddItemViewController.m */,
 			);
 			path = Labb3;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65BFBDF820230DC300042C2E /* ViewController.m in Sources */,
+				65BFBE172024A48400042C2E /* AddItemViewController.m in Sources */,
 				65BFBE0320230DC300042C2E /* main.m in Sources */,
 				65BFBDF520230DC200042C2E /* AppDelegate.m in Sources */,
 				65BFBE142023419200042C2E /* SavingLists.m in Sources */,
