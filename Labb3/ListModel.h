@@ -12,10 +12,10 @@
 @property (nonatomic) NSMutableArray *todoItems;
 @property (nonatomic) NSMutableArray *doneItems;
 
-//@property (nonatomic) NSDictionary *todoItemDict;
-//@property (nonatomic) NSDictionary *doneItemDict;
-
-//- (void)moveBetweenArray:(NSMutableArray *)todoArray toArray:(NSMutableArray *)doneArray withSection:(long)indexPath;
+- (void) deleteFromArray:(NSMutableArray*)array withItem:(NSMutableArray*)item;
+- (void) addToArray:(NSMutableArray*)array withItem:(NSMutableArray*)item;
+- (void) moveFrom:(NSMutableArray*)fromArray to:(NSMutableArray*)toArray withItem:(NSMutableArray*)item;
+- (void) deleteFromArray:(NSMutableArray *)array atRow:(long)row;
 - (void) saveArrays;
 
 @end

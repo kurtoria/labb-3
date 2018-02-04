@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,38 +34,46 @@
                             <outlet property="delegate" destination="4SH-xt-RSI" id="f9O-87-sb5"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="To do-list" id="EqU-iU-CaO">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="UfP-L2-91d">
-                            <connections>
-                                <action selector="addButton:" destination="4SH-xt-RSI" id="uvG-FN-rMY"/>
-                                <segue destination="uiz-1Y-LI8" kind="show" identifier="Add" id="pDx-Wq-GKl"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="add" id="UfP-L2-91d">
+                                <connections>
+                                    <action selector="addButton:" destination="4SH-xt-RSI" id="uvG-FN-rMY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Add" id="HYA-SY-47K">
+                                <connections>
+                                    <segue destination="uiz-1Y-LI8" kind="show" identifier="Add" id="gJ1-4Q-Gey"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E86-Ts-gvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="680.79999999999995" y="78.710644677661179"/>
         </scene>
-        <!--Add Item View Controller-->
+        <!--Add item-->
         <scene sceneID="28U-6D-DKk">
             <objects>
-                <viewController id="uiz-1Y-LI8" customClass="AddItemViewController" sceneMemberID="viewController">
+                <viewController title="Add item" id="uiz-1Y-LI8" customClass="AddItemViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4PG-q3-XMo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fKo-cl-8Qb">
-                                <rect key="frame" x="16" y="128" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fKo-cl-8Qb">
+                                <rect key="frame" x="16" y="188" width="343" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20986160384181485" green="0.93495951920541243" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbW-kj-cee">
-                                <rect key="frame" x="16" y="206" width="343" height="42"/>
+                                <rect key="frame" x="16" y="346" width="343" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -72,30 +81,11 @@
                                     <action selector="addButton:" destination="uiz-1Y-LI8" eventType="touchUpInside" id="5z7-Ry-gVu"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37J-pX-bl5">
-                                <rect key="frame" x="164" y="287" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Important" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caN-QC-i4Y">
-                                <rect key="frame" x="219" y="292" width="140" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not important" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-hA-qSV">
-                                <rect key="frame" x="16" y="292" width="140" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4g5-E0-C66"/>
                     </view>
                     <connections>
-                        <outlet property="importantSwitch" destination="37J-pX-bl5" id="A2N-NE-fbE"/>
                         <outlet property="textLabel" destination="fKo-cl-8Qb" id="qbd-Ez-PUH"/>
                     </connections>
                 </viewController>
@@ -119,7 +109,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRr-SM-wpl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="79"/>
+            <point key="canvasLocation" x="-145" y="79"/>
         </scene>
     </scenes>
 </document>

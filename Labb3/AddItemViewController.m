@@ -19,8 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+    self.textLabel.borderStyle = [UIColor blackColor];
+    self.textLabel.layer.borderWidth = 1.5f;
 }
 
 - (IBAction)addButton:(id)sender {

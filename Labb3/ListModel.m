@@ -7,7 +7,6 @@
 //
 
 #import "ListModel.h"
-#import "SavingLists.h"
 
 @implementation ListModel
 
@@ -28,6 +27,30 @@
     return self;
 }
 
+//Move from one array to another
+- (void) moveFrom:(NSMutableArray*)fromArray to:(NSMutableArray*)toArray withItem:(NSMutableArray*)item {
+    [self addToArray:toArray withItem:item];
+    [self deleteFromArray:fromArray withItem:item];
+}
+
+//Delete from array with item
+- (void) deleteFromArray:(NSMutableArray*)array withItem:(NSMutableArray*)item {
+    [array removeObject:item];
+    [self saveArrays];
+}
+
+//Add to array with item
+- (void) addToArray:(NSMutableArray*)array withItem:(NSMutableArray*)item {
+    [array addObject:item];
+    [self saveArrays];
+}
+
+//Delete from array at row index
+- (void) deleteFromArray:(NSMutableArray *)array atRow:(long)row {
+    [array removeObjectAtIndex:row];
+    [self saveArrays];
+}
+
 //Save array
 - (void) saveArrays {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -43,24 +66,6 @@
     self.todoItems = [[userDefaults objectForKey:@"Todo"] mutableCopy];
     self.doneItems = [[userDefaults objectForKey:@"Done"] mutableCopy];
     //[userDefaults objectForKey:@"Todo"];
-}
-
-
-
--(NSMutableArray*) addObjectToArray:(NSMutableArray*)array {
-    return array;
-}
-
-- (void)moveBetweenArray:(NSMutableArray *)todoArray toArray:(NSMutableArray *)doneArray withSection:(long)indexPath {
-    if (indexPath == 0) {
-        NSMutableArray *item = [todoArray[indexPath] mutableCopy];
-        [doneArray addObject:item];
-        [todoArray removeObject:item];
-    } else {
-        NSMutableArray *item = [doneArray[indexPath] mutableCopy];
-        [todoArray addObject:item];
-        [doneArray removeObject:item];
-    }
 }
  
 
