@@ -23,6 +23,9 @@
         if (self.doneItems == nil) {
             self.doneItems = @[].mutableCopy;
         }
+        if (self.importantItems == nil) {
+            self.importantItems = @[].mutableCopy;
+        }
     }
     return self;
 }
@@ -45,6 +48,15 @@
     [self saveArrays];
 }
 
+- (void) addBool:(BOOL)boolean withItem:(NSMutableArray*)item {
+    if (boolean) {
+        [self.importantItems addObject:item];
+    } else {
+        [self.todoItems addObject:item];
+    }
+    [self saveArrays]
+    ;}
+
 //Delete from array at row index
 - (void) deleteFromArray:(NSMutableArray *)array atRow:(long)row {
     [array removeObjectAtIndex:row];
@@ -56,8 +68,9 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.todoItems forKey:@"Todo"];
     [userDefaults setObject:self.doneItems forKey:@"Done"];
+    [userDefaults setObject:self.importantItems forKey:@"Important"];
     [userDefaults synchronize];
-    NSLog(@"Saved todo: %@, Saved done: %@", self.todoItems, self.doneItems);
+    NSLog(@"Saved todo: %@, Saved done: %@, Saved important: %@", self.todoItems, self.doneItems, self.importantItems);
 }
 
 //Get array
@@ -65,6 +78,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.todoItems = [[userDefaults objectForKey:@"Todo"] mutableCopy];
     self.doneItems = [[userDefaults objectForKey:@"Done"] mutableCopy];
+    self.importantItems = [[userDefaults objectForKey:@"Important"] mutableCopy];
     //[userDefaults objectForKey:@"Todo"];
 }
  

@@ -11,9 +11,11 @@
 @interface ListModel : NSObject
 @property (nonatomic) NSMutableArray *todoItems;
 @property (nonatomic) NSMutableArray *doneItems;
+@property (nonatomic) NSMutableArray *importantItems;
 
 - (void) deleteFromArray:(NSMutableArray*)array withItem:(NSMutableArray*)item;
 - (void) addToArray:(NSMutableArray*)array withItem:(NSMutableArray*)item;
+- (void) addBool:(BOOL)boolean withItem:(NSMutableArray *)item;
 - (void) moveFrom:(NSMutableArray*)fromArray to:(NSMutableArray*)toArray withItem:(NSMutableArray*)item;
 - (void) deleteFromArray:(NSMutableArray *)array atRow:(long)row;
 - (void) saveArrays;

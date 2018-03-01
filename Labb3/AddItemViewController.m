@@ -19,15 +19,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.textLabel.borderStyle = [UIColor blackColor];
     self.textLabel.layer.borderWidth = 1.5f;
 }
 
 - (IBAction)addButton:(id)sender {
+    if (self.importantSwitch.isOn) {
+        [self.model.importantItems addObject:self.textLabel.text];
+        NSLog(@"Todo addView: %@", self.model.todoItems);
+        [self.model saveArrays];
+    } else {
+        [self.model.todoItems addObject:self.textLabel.text];
+        NSLog(@"Todo addView: %@", self.model.todoItems);
+        [self.model saveArrays];
+    }
+    /*
     [self.model.todoItems addObject:self.textLabel.text];
     NSLog(@"Todo addView: %@", self.model.todoItems);
     [self.model saveArrays];
-
+    */
+     
     //Jumps back to TodoTableView
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -36,15 +46,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
