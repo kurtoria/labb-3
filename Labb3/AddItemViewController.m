@@ -26,17 +26,11 @@
     if (self.importantSwitch.isOn) {
         [self.model.importantItems addObject:self.textLabel.text];
         NSLog(@"Todo addView: %@", self.model.todoItems);
-        [self.model saveArrays];
     } else {
         [self.model.todoItems addObject:self.textLabel.text];
         NSLog(@"Todo addView: %@", self.model.todoItems);
-        [self.model saveArrays];
     }
-    /*
-    [self.model.todoItems addObject:self.textLabel.text];
-    NSLog(@"Todo addView: %@", self.model.todoItems);
     [self.model saveArrays];
-    */
      
     //Jumps back to TodoTableView
     [self.navigationController popViewControllerAnimated:YES];

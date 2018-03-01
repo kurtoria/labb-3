@@ -48,15 +48,6 @@
     [self saveArrays];
 }
 
-- (void) addBool:(BOOL)boolean withItem:(NSMutableArray*)item {
-    if (boolean) {
-        [self.importantItems addObject:item];
-    } else {
-        [self.todoItems addObject:item];
-    }
-    [self saveArrays]
-    ;}
-
 //Delete from array at row index
 - (void) deleteFromArray:(NSMutableArray *)array atRow:(long)row {
     [array removeObjectAtIndex:row];
@@ -79,7 +70,6 @@
     self.todoItems = [[userDefaults objectForKey:@"Todo"] mutableCopy];
     self.doneItems = [[userDefaults objectForKey:@"Done"] mutableCopy];
     self.importantItems = [[userDefaults objectForKey:@"Important"] mutableCopy];
-    //[userDefaults objectForKey:@"Todo"];
 }
  
 
